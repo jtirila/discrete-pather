@@ -66,27 +66,25 @@ def _in_available_grid_cell(state, grid):
         grid[state[1]][state[2]] == 0
 
 
-def _nowhere_to_go(state_list):
-    False  # TODO
+if __name__ == "__main__":
 
+    grid = [[0, 0, 1, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0],
+            [0, 0, 1, 0, 1, 0],
+            [0, 0, 1, 0, 1, 0],
+            [0, 0, 0, 0, 1, 0]]
 
-grid = [[0, 0, 1, 0, 0, 0],
-        [0, 0, 1, 0, 0, 0],
-        [0, 0, 1, 0, 1, 0],
-        [0, 0, 1, 0, 1, 0],
-        [0, 0, 0, 0, 1, 0]]
+    # grid = [[0, 1],
+    #         [0, 0]]
+    init = [0, 0]
+    goal = [len(grid)-1, len(grid[0])-1]
+    cost = 1
 
-# grid = [[0, 1],
-#         [0, 0]]
-init = [0, 0]
-goal = [len(grid)-1, len(grid[0])-1]
-cost = 1
+    delta = [[-1, 0],  # go up
+             [0, -1],  # go left
+             [1,  0],  # go down
+             [0,  1]]  # go right
 
-delta = [[-1, 0],  # go up
-         [0, -1],  # go left
-         [1,  0],  # go down
-         [0,  1]]  # go right
+    delta_name = ['^', '<', 'v', '>']
 
-delta_name = ['^', '<', 'v', '>']
-
-print(search(grid, init, goal, cost, delta))
+    print(search(grid, init, goal, cost, delta))
