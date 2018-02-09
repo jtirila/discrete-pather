@@ -25,7 +25,7 @@ def search(grid, init, goal, cost, delta):
     visited = [[0] + init]
     while _not_done(goal, state_list) and len(state_list) > 0:
         state_list.sort(key=lambda x: x[0])
-        state_list = state_list[1:] + _proceed(state_list[0], state_list, visited, grid, delta)
+        state_list = state_list[1:] + _proceed(state_list[0], state_list, visited, grid, delta, cost)
         if len(state_list) == 0:
             return False
         visited += [state_list[0]]
@@ -33,10 +33,10 @@ def search(grid, init, goal, cost, delta):
     # return path
 
 
-def _proceed(state, state_list, visited, grid, delta):
+def _proceed(state, state_list, visited, grid, delta, cost):
     new_state_list = []
     for step in delta:
-        candidate_state = [state[0] + 1] + [sum(x) for x in zip(state[1:3], step)]
+        candidate_state = [state[0] + cost] + [sum(x) for x in zip(state[1:3], step)]
         if _position_legal(candidate_state, state_list, visited, grid):
             new_state_list.append(candidate_state)
     return new_state_list
@@ -70,21 +70,23 @@ def _nowhere_to_go(state_list):
     False  # TODO
 
 
-if __name__ == "__main__":
-    grid = [[0, 0, 1, 0, 0, 0],
-            [0, 0, 1, 0, 0, 0],
-            [0, 0, 1, 0, 1, 0],
-            [0, 0, 1, 0, 1, 0],
-            [0, 0, 0, 0, 1, 0]]
-    init = [0, 0]
-    goal = [len(grid)-1, len(grid[0])-1]
-    cost = 1
+grid = [[0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 1, 0],
+        [0, 0, 1, 0, 1, 0],
+        [0, 0, 0, 0, 1, 0]]
 
-    delta = [[-1, 0],  # go up
-             [0, -1],  # go left
-             [1,  0],  # go down
-             [0,  1]]  # go right
+# grid = [[0, 1],
+#         [0, 0]]
+init = [0, 0]
+goal = [len(grid)-1, len(grid[0])-1]
+cost = 1
 
-    delta_name = ['^', '<', 'v', '>']
+delta = [[-1, 0],  # go up
+         [0, -1],  # go left
+         [1,  0],  # go down
+         [0,  1]]  # go right
 
-    print(search(grid, init, goal, cost, delta))
+delta_name = ['^', '<', 'v', '>']
+
+print(search(grid, init, goal, cost, delta))
