@@ -24,16 +24,15 @@ init = [0, 0]
 goal = [len(grid)-1, len(grid[0])-1]
 cost = 1
 
-delta = [[-1, 0], # go up
-         [ 0,-1], # go left
-         [ 1, 0], # go down
-         [ 0, 1]] # go right
+delta = [[-1, 0],  # go up
+         [0, -1],  # go left
+         [1,  0],  # go down
+         [0,  1]]  # go right
 
 delta_name = ['^', '<', 'v', '>']
 
-def search(grid,init,goal,cost):
-    # ----------------------------------------
-    # insert code here
-    # ----------------------------------------
+
+def search(grid, init, goal, cost):
+    #
 
     return path
