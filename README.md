@@ -19,4 +19,17 @@ This relates to the next quiz, instructions in the Python source file.
 ### discrete-a-star.py
 
 A simplified discrete search problem, solved by a simplified  `A*`
-algorithm. (Not implemented yet.)
+algorithm.
+
+### dynamic_value_function.py
+
+Not quite sure why the Udacity grader does not accept this
+implementation. As far as I can tell, the results are correct. There
+may be some very simple output formatting issue though. Won't bother
+dig any deeper.
+
+
+### dynamic_optimal_path.py
+
+See above, the same note applies.
+
