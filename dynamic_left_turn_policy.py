@@ -151,7 +151,7 @@ def optimum_policy2D(grid, init, goal, cost):
                 new_reachable_cells = new_reachable_cells[:index_of_cell] + new_reachable_cells[index_of_cell + 1:]
 
     goal_reaching_cells = list(sorted(goal_reaching_cells, key=lambda x: x[3], reverse=True))
-    return goal_reaching_cells[0]
+    return goal_reaching_cells[0][4]
 
 
 a = [0, 1, 0, 0]
@@ -162,5 +162,5 @@ e = [1, 3, 0, 0]
 
 cell = optimum_policy2D(grid, init, goal, cost)
 
-for row in cell[4]:
+for row in cell:
     print(row)
